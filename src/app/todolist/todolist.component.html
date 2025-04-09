@@ -1,0 +1,33 @@
+<div class="max-w-xl mx-auto p-4">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Todo List</h2>
+    
+    <!-- Input field with Add button -->
+    <div class="flex gap-3 mb-4">
+      <input 
+        [formControl]="todoInput" 
+        (keydown.enter)="addTodo()" 
+        placeholder="Enter a new task"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button 
+        (click)="addTodo()"
+        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
+      >
+        Add
+      </button>
+    </div>
+    
+    <!-- Todo List -->
+    <ul class="space-y-2">
+      <li *ngFor="let todo of todos; let i = index" class="flex justify-between items-center bg-gray-100 p-2 rounded-md shadow-md hover:bg-gray-200">
+        <span class="text-lg">{{ todo }}</span>
+        <button 
+          (click)="removeTodo(i)"
+          class="ml-4 text-red-500 hover:text-red-700 transition duration-200"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+  
